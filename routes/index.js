@@ -1,7 +1,7 @@
 // Show all blogposts
 const express = require("express");
 const router = express.Router();
-//require firebase
+// Require firebase
 const firebase = require("firebase");
 // Initialize Firestore Database
 const db = firebase.firestore();
