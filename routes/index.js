@@ -9,22 +9,24 @@ const db = firebase.firestore();
 const blogposts = db.collection("blogposts");
 
 router.get("/", (req, res) => {
-    // Inside of this arrow funciton, we can do anything we want as long as we return at the end
-    const blogpostsArray =[];
+  // Inside of this arrow funciton, we can do anything we want as long as we return at the end
+  const blogpostsArray = [];
 
-    blogposts.get().then(function(querySnapshot) {
-        console.log("querySnapshot", querySnapshot);
-        // Loop through query snapshot and push into array
-        querySnapshot.forEach((doc) => {
-            blogpostsArray.push(doc.data())
-        })
-        // Return array
-        return res.send(blogpostsArray);
-    }).catch(function(e) {
-        console.warn('error', e);
-        return res.send(error);
+  blogposts
+    .get()
+    .then(function (querySnapshot) {
+      console.log("querySnapshot", querySnapshot);
+      // Loop through query snapshot and push into array
+      querySnapshot.forEach((doc) => {
+        blogpostsArray.push(doc.data());
+      });
+      // Return array
+      return res.send(blogpostsArray);
+    })
+    .catch(function (e) {
+      console.warn("error", e);
+      return res.send(error);
     });
-
 });
 
 module.exports = router;
